@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-app
+  namespace: argocd
+spec:
+  project: demo
+  source:
+    repoURL: 'https://github.com/franklynux/Advanced-Config-Manage-With-Kustomize.git'
+    path: overlays/dev
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: demo
