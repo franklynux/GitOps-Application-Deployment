@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ebs-csi-node
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: ebs-csi-node
+  template:
+    metadata:
+      labels:
+        app: ebs-csi-node
+    spec:
+      containers:
+      - name: ebs-plugin
+        image: public.ecr.aws/ebs-csi-driver/aws-ebs-csi-driver:v1.19.0
+        args:
+        - node
+        - --endpoint=$(CSI_ENDPOINT)
+        - --logtostderr
+        - --v=2
+        env:
+        - name: CSI_ENDPOINT
+          value: unix:///csi/csi.sock
+        volumeMounts:
+        - name: socket-dir
+          mountPath: /csi
+        - name: device-dir
+          mountPath: /dev
+        - name: sys-dir
+          mountPath: /sys
+        securityContext:
+          privileged: true
+      volumes:
+      - name: socket-dir
+        hostPath:
+          path: /var/lib/kubelet/plugins/ebs.csi.aws.com
+          type: DirectoryOrCreate
+      - name: device-dir
+        hostPath:
+          path: /dev
+      - name: sys-dir
+        hostPath:
+          path: /sys
