@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: demo
+  namespace: argocd
+spec:
+  destinations:
+  - namespace: demo
+    server: https://kubernetes.default.svc
+  - namespace: wordpress
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - 'https://github.com/franklynux/gitops-application-deployment.git'
+  - 'https://charts.bitnami.com/bitnami'

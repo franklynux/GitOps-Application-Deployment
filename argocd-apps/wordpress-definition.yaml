@@ -4,14 +4,30 @@ metadata:
   name: wordpress-git
   namespace: argocd
 spec:
-  project: default
+  project: demo
   source:
-    repoURL: 'https://github.com/franklynux/gitops-application-deployment.git'
-    targetRevision: HEAD
-    path: helm-charts/wordpress-helm/
+    repoURL: 'https://charts.bitnami.com/bitnami'
+    targetRevision: '*'
+    chart: wordpress
     helm:
-      valueFiles:
-        - values.yaml
+      values: |
+        wordpressUsername: admin
+        wordpressPassword: mypassword123
+        wordpressBlogName: "Franklynux WordPress Blog"
+        wordpressEmail: chiwando3@outlook.com
+        service:
+          type: LoadBalancer
+        persistence:
+          enabled: true
+          size: 10Gi
+        mariadb:
+          enabled: false
+        externalDatabase:
+          host: database-wordpress.cs784686qxm6.us-east-1.rds.amazonaws.com
+          port: 3306
+          user: Franklynux
+          password: Admin123!
+          database: wordpress
   destination:
     server: https://kubernetes.default.svc
     namespace: wordpress

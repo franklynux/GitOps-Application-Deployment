@@ -1,4 +1,4 @@
-# values.yaml
+
 wordpress:
   wordpressUsername: admin
   wordpressPassword: mypassword123
@@ -23,7 +23,7 @@ wordpress:
     user: Franklynux
     password: Admin123!
     database: wordpress
-    existingSecret: "{{ include \"wordpress.fullname\" . }}-db"
+    existingSecret: "wordpress-db-secret"
     existingSecretPasswordKey: "mysql-password"
   
   ingress:
