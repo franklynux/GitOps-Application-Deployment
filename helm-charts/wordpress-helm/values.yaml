@@ -18,7 +18,7 @@ wordpress:
     enabled: false
   
   externalDatabase:
-    host: your-rds-endpoint.region.rds.amazonaws.com
+    host: 'database-wordpress.cs784686qxm6.us-east-1.rds.amazonaws.com'
     port: 3306
     user: Franklynux
     password: Admin123!

@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/franklynux/wordpress-helm.git'
+    repoURL: 'https://github.com/franklynux/gitops-application-deployment.git'
     targetRevision: HEAD
     path: helm-charts/wordpress-helm/
     helm:
