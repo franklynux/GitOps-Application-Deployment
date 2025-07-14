@@ -1,0 +1,11 @@
+apiVersion: v2
+name: wordpress
+description: WordPress deployment using Bitnami chart
+type: application
+version: 1.0.0
+appVersion: "6.3.2"
+
+dependencies:
+  - name: wordpress
+    version: 18.1.15
+    repository: https://charts.bitnami.com/bitnami

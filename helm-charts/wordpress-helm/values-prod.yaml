@@ -1,0 +1,28 @@
+# values-prod.yaml
+wordpress:
+  wordpressUsername: admin
+  wordpressPassword: supersecretpassword
+  wordpressBlogName: "Production Blog"
+  
+  service:
+    type: LoadBalancer
+  
+  persistence:
+    enabled: true
+    size: 20Gi
+  
+  mariadb:
+    auth:
+      rootPassword: supersecretrootpassword
+      password: supersecretwordpresspassword
+    primary:
+      persistence:
+        enabled: true
+        size: 20Gi
+  
+#  ingress:
+#    enabled: true
+#    hostname: myblog.com
+#    annotations:
+#      cert-manager.io/cluster-issuer: letsencrypt-prod
+#    tls: true
