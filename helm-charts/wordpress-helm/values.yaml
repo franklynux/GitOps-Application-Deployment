@@ -18,7 +18,7 @@ wordpress:
     enabled: false
   
   externalDatabase:
-    host: 'database-wordpress.cs784686qxm6.us-east-1.rds.amazonaws.com'
+    host: 'wordpress-db.cs784686qxm6.us-east-1.rds.amazonaws.com'
     port: 3306
     user: Franklynux
     password: Admin123!
