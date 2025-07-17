@@ -5,13 +5,15 @@ wordpress:
   wordpressBlogName: "Franklynux WordPress Blog"
   wordpressEmail: chiwando3@outlook.com
   
+  replicas: 1
+
   service:
     type: LoadBalancer
     port: 80
   
   persistence:
     enabled: true
-    storageClass: ""
+    storageClass: ebs-csi
     size: 10Gi
   
   mariadb:
@@ -20,8 +22,8 @@ wordpress:
   externalDatabase:
     host: 'wordpress-db.cs784686qxm6.us-east-1.rds.amazonaws.com'
     port: 3306
-    user: Franklynux
-    password: Admin123!
+    user: admin
+    password: Demo123!
     database: wordpress
     existingSecret: "wordpress-db-secret"
     existingSecretPasswordKey: "mysql-password"

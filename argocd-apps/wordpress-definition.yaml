@@ -17,10 +17,11 @@ spec:
         wordpressEmail: chiwando3@outlook.com
         service:
           type: LoadBalancer
+        replicas: 2  
         persistence:
           enabled: true
           size: 10Gi
-          storageClass: ebs-csi-fixed
+          storageClass: ebs-csi
         mariadb:
           enabled: false
         externalDatabase:
