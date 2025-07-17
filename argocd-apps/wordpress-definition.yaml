@@ -20,7 +20,7 @@ spec:
         persistence:
           enabled: true
           size: 10Gi
-          storageClass: ebs-csi
+          storageClass: ebs-csi-fixed
         mariadb:
           enabled: false
         externalDatabase:
