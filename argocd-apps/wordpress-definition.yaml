@@ -6,30 +6,12 @@ metadata:
 spec:
   project: demo
   source:
-    repoURL: 'https://charts.bitnami.com/bitnami'
-    targetRevision: '*'
-    chart: wordpress
+    repoURL: 'https://github.com/franklynux/gitops-application-deployment.git'
+    targetRevision: HEAD
+    path: helm-charts/wordpress-helm
     helm:
-      values: |
-        wordpressUsername: admin
-        wordpressPassword: mypassword123
-        wordpressBlogName: "Franklynux WordPress Blog"
-        wordpressEmail: chiwando3@outlook.com
-        service:
-          type: LoadBalancer
-        replicas: 2  
-        persistence:
-          enabled: true
-          size: 10Gi
-          storageClass: ebs-csi
-        mariadb:
-          enabled: false
-        externalDatabase:
-          host: wordpress-db.cs784686qxm6.us-east-1.rds.amazonaws.com
-          port: 3306
-          user: admin
-          password: Demo123!
-          database: wordpress
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: wordpress

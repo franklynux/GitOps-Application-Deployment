@@ -1,34 +1,25 @@
+wordpressUsername: admin
+wordpressPassword: mypassword123
+wordpressBlogName: "Franklynux WordPress Blog"
+wordpressEmail: chiwando3@outlook.com
 
-wordpress:
-  wordpressUsername: admin
-  wordpressPassword: mypassword123
-  wordpressBlogName: "Franklynux WordPress Blog"
-  wordpressEmail: chiwando3@outlook.com
-  
-  replicas: 1
+replicas: 2
 
-  service:
-    type: LoadBalancer
-    port: 80
-  
-  persistence:
-    enabled: true
-    storageClass: ebs-csi
-    size: 10Gi
-  
-  mariadb:
-    enabled: false
-  
-  externalDatabase:
-    host: 'wordpress-db.cs784686qxm6.us-east-1.rds.amazonaws.com'
-    port: 3306
-    user: admin
-    password: Demo123!
-    database: wordpress
-    existingSecret: "wordpress-db-secret"
-    existingSecretPasswordKey: "mysql-password"
-  
-  ingress:
-    enabled: false
-    ingressClassName: nginx
-    hostname: wordpress.local
+service:
+  type: LoadBalancer
+  port: 80
+
+persistence:
+  enabled: true
+  storageClass: ebs-csi
+  size: 10Gi
+
+mariadb:
+  enabled: false
+
+externalDatabase:
+  host: 'wordpress-db.cs784686qxm6.us-east-1.rds.amazonaws.com'
+  port: 3306
+  user: admin
+  password: Demo123!
+  database: wordpress
